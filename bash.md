@@ -37,7 +37,7 @@
 
 - Substitutions: `$(patsubst %,raw/%.csv,file smile tile)` --> `raw/file.csv raw/smile.csv raw/tile.csv`
 - Implicit recipe (where `$*` is whatever the `%` is):
-```
+```bash
 output/%.csv : src/script_to_do raw/%.zip
     python $^ $@ $*
 ```
