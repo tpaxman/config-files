@@ -165,7 +165,7 @@ check Ubuntu version: `lsb_release -a`
 
 All are valid (first is most common) [src](https://linuxize.com/post/bash-functions/):
 
-```
+```bash
 function_name () {
   commands
 }
@@ -181,7 +181,7 @@ function function_name { commands; }
     
 ### If-else
 
-```
+```bash
 #!/bin/bash
 T1="foo"
 T2="bar"
@@ -201,7 +201,7 @@ fi
 
 - Put this at the beginning of the script: `#!/bin/bash`
 - Example:
-```
+```bash
 #!/bin/bash
 
 # global variables
@@ -224,7 +224,7 @@ my_function () {
 - When double-quoted, `"$*"` expands to a single string separated by space --> `"$1 $2 $n"`.
 - When double-quoted, `"$@"` expands to separate strings --> `"$1" "$2" "$n"`
 - Slicing arguments:
-```
+```bash
 echo $@;              #"p1" "p2" "p3" "p4" "p5"
 echo ${@: 0};  #"bash" "p1" "p2" "p3" "p4" "p5"
 echo ${@: 1};         #"p1" "p2" "p3" "p4" "p5"
@@ -238,7 +238,7 @@ echo ${@: -2:1};                     #"p4"
 ### Case Statements
 
 Example:
-```
+```bash
 #!/bin/bash
 
 echo -n "Enter the name of a country: "
@@ -269,7 +269,7 @@ esac
 ### Loops
 
 Example:
-```
+```bash
 #!/bin/bash
 for i in 1 2 3 4 5
 do
@@ -284,7 +284,7 @@ or: `for i in 1 2 3 4 5; do echo $i ; done`
 ### WSL
 
 - Mounting Drives  
-```
+```bash
 sudo mkdir /mnt/x
 sudo mount -t drvfs '\\network\path' /mnt/x
 ```
