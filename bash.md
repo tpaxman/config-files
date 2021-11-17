@@ -90,7 +90,25 @@ check Ubuntu version: `lsb_release -a`
     - [grep with color](https://linuxcommando.blogspot.com/2007/10/grep-with-color-output.html)
     - [highlight (native to Linux)](https://linux.die.net/man/1/highlight)
     - [pygment (python based; a bit slow](https://pygments.org/docs/cmdline/)
-    
+
+
+### Get the stem of a filename with parameter substitution/pattern matching [src](https://unix.stackexchange.com/questions/19654/how-do-i-change-the-extension-of-multiple-files)
+
+```bash
+$ x=abc.txt
+$ echo ${x%.txt}
+abc
+```
+
+### Loop over multiple files:
+
+```bash
+for f in *.opml; do pandoc $f -o ${f%.opml}.md; done;
+```
+
+References:
+- https://www.metagenomics.wiki/tools/ubuntu-linux/shell-loop
+
     
 ## CONFIGURATION
 
