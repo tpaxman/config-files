@@ -102,6 +102,8 @@ Change each 'foo' (case sensitive due to the `I` flag) to 'bar'; ask for confirm
 `:%s/foo\C/bar/gc` is the same because `\C` makes the search case sensitive.
 This may be wanted after using `:set ignorecase` to make searches case insensitive.
 
+- [replace something with a newline](https://stackoverflow.com/questions/71323/how-to-replace-a-character-by-a-newline-in-vim): use `\r` in the replace slot.
+
 [source](https://vim.fandom.com/wiki/Search_and_replace)
 
 ## Normal Mode Editing
@@ -142,7 +144,7 @@ Navigation ([src](https://vim.fandom.com/wiki/Moving_around))
         - change within word: `ciw`
         - change to end of word: `ce`
     - change text to end of line: `C` (puts vim into Insert Mode)
-    
+ 
     
     
         
