@@ -1,15 +1,12 @@
-# MARKDOWN TABLE SYNTAX
+# Markdown
 
-```
-| Header1 | Header2 |
-| --------| ------- |
-| A       | 1       |
-| B       | 2       |
-```
+## How to add metadata:
 
-```
-| LeftAlign | Center | RightAlign |
-| :---      | :----: |       ---: |
-| A         | 1      | 30         |
-| B         | 2      | 40         |
-```
+    ---
+    title: My Document
+    date: September 22, 2020
+    ---
+
+    ## Test
+    some text
+

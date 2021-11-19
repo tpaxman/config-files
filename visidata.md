@@ -1,0 +1,22 @@
+# VisiData
+
+- `gF` - group by key columns
+- `U` - undo
+- `!` - set as key column
+- `C` show columns summary
+- `"` - open duplicate sheet with selected rows
+- `s`, `t`, `u` - select/toggle/unselect
+- `|`, `\\` - select/unselect rows matching regex current column
+- `g|`, `g\\` - select/unselect rows matching regex entire sheet
+- `[`, `]` - sort ascending/descending
+- `g[`, `g]` - sort ascending/descending by key columns
+- `z[`, `z]` - sort ascending/descending keeping previous sorts
+- `,` - select rows matching current cell
+- `%` - specify column as float
+- `#` - specify column as integer
+- `z|` - select by expression
+- `Ctrl + s` - save current sheet
+- `Ctrl + d` - save command log
+- `+` - add aggregator that appends when doing `F`
+- `F` - view frequency table
+- `Z` - reduce column width by half

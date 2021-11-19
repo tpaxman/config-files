@@ -69,15 +69,9 @@ https://git-scm.com/docs/git-diff
 
 #### git config credential.helper store
 
-## Untracking Files
 
-### Best way:
-
-`git update-index --assume-unchanged <file>`
-[source](https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore)
-
-### Other ways:
-
+- untrack files that are already in repo:
+    - best way: `git update-index --assume-unchanged <file>` ([source](https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore))
     git rm --cached <file>
     git rm -r --cached <folder>
 
