@@ -1,5 +1,10 @@
 # Power Query
 
+PYTHON | POWER QUERY
+--- | ---
+`[1, 2, 3]` | `{1, 2, 3}`
+
+
 ## Lists
 ```csharp
 // create list:
