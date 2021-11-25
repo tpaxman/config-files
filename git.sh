@@ -24,8 +24,8 @@ git branch -d branchname          # delete branch locally
 git push -d origin branchname     # push deleted branch to remote
 git fetch --prune                 # prune deleted branches (--prune = -p)
 
-# DIFF FILES AND BRANCHES [3]
-git diff branchA branchB -- file.py            # same file but different branches
+# DIFF FILES AND BRANCHES 
+git diff branchA branchB -- file.py            # same file but different branches [3]
 git diff branchB file.py                       # same file, different branches (if you are already in branchA)
 git diff develop:foo.txt master:bar.txt        # Different files, different branches
 git diff branchA branchB -- folder             # diff between folders
@@ -49,8 +49,6 @@ git config --global user.email "email@email.com"
 # [2] https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
 # [3] https://stackoverflow.com/questions/38664421/how-do-i-call-git-diff-on-the-same-file-between-2-different-local-branches
 # [4] https://clubmate.fi/git-removing-files-from-the-staging-area-and-the-tree/
-
-
 
 #    Configure line endings
 #     Windows vs. Linux: https://barryvanveen.nl/blog/52-solving-inconsistent-line-endings-within-a-git-repository
