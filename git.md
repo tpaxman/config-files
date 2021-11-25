@@ -1,31 +1,21 @@
 # Git
 
-## Initialize Repo
-
+```bash
+git init   # initialize repo
+git add .   # add files in current folder to repo
+git commit -m "abc"   # commit with a message
+git clone --bare /path/to/repo   # clone a bare repo
+git remote add origin <remote_repository_url>   # setup remote repo
+git push -u origin master   # push upstream from local to remote repo
+git log -p bar   # show history of a file 
+git log --follow -p -- path-to-file   # show complete history of file (following renames) (https://stackoverflow.com/questions/278192/view-the-change-history-of-a-file-using-git-versioning#:~:text=Using%20git%20log%20%2D%2Dfollow,are%20included%20for%20each%20change)
 ```
-git init
-git add .
-git commit -m "abc"
-```
-
-## Clone bare repo
-
-`git clone --bare /path/to/repo`
-
-## Setup Remote
-
-```
-git remote add origin <remote_repository_url>
-git push -u origin master
-```
-
 ## Diff
 
 https://git-scm.com/docs/git-diff
 
-- See complete history of a file: `git log --follow -p -- path-to-file`
 
-> This will show the **entire** history of the file (including history beyond renames and with diffs for each change). In other words, if the file named `bar` was once named `foo`, then `git log -p bar` (without the `--follow` option) will only show the file's history up to the point where it was renamed -- it won't show the file's history when it was known as `foo`.  Using `git log --follow -p bar` will show the file's entire history, including any changes to the file when it was known as `foo`. The `-p` option ensures that diffs are included for each change.  [source](https://stackoverflow.com/questions/278192/view-the-change-history-of-a-file-using-git-versioning#:~:text=Using%20git%20log%20%2D%2Dfollow,are%20included%20for%20each%20change.)
+> This will show the **entire** history of the file (including history beyond renames and with diffs for each change). In other words, if the file named `bar` was once named `foo`, then `` (without the `--follow` option) will only show the file's history up to the point where it was renamed -- it won't show the file's history when it was known as `foo`.  Using `git log --follow -p bar` will show the file's entire history, including any changes to the file when it was known as `foo`. The `-p` option ensures that diffs are included for each change.  [source]()
 
 - [View same file, different branches:](https://stackoverflow.com/questions/38664421/how-do-i-call-git-diff-on-the-same-file-between-2-different-local-branches/) `git diff branchA branchB -- file.py`
 - View same file, different branches if you are in branchA: `git diff branchB file.py`
