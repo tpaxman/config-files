@@ -43,14 +43,14 @@ git rm --cached <file>                        # other way
 git rm -r --cached <folder>                   # other way
 
 ### Delete branch locally and remotely
-git branch -d branchname
-git push -d origin branchname
-git fetch --prune   # prune deleted branches (--prune = -p)
+git branch -d branchname          # delete branch locally
+git push -d origin branchname     # push deleted branch to remote
+git fetch --prune                 # prune deleted branches (--prune = -p)
 
 ## Show files
-git show --pretty="" --name-only 62c856a# Show files in an old commit:
-git show <commit>:path/to/fil# Look at file in old commite
-git log --all --full-history -- <path-to-file># Find out when file got deleted (https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history)
+git show --pretty="" --name-only 62c856a         # Show files in an old commit:
+git show <commit>:path/to/file                   # Look at file in old commite
+git log --all --full-history -- <path-to-file>   # Find out when file got deleted (https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history)
 
 # Configure user details
 git config --global user.name "user_name"
