@@ -10,3 +10,17 @@ read_excel_table = (filename, tablename) => read_excel(filename, tablename, "Tab
 read_csv = (filename, sep) => Csv.Document(File.Contents(filename),[Delimiter=sep, Encoding=65001]),
 read_table = (tablename) => Excel.CurrentWorkbook(){[Name=tablename]}[Content]
 
+extract_parameter_from_named_range = (rangename) => Excel.CurrentWorkbook(){[Name=rangename]}[Content]{0}[Column1]
+
+// map(each _ + 1, {1, 2, 3})
+map = (f as function, x as list) => List.Transform(x, f)
+
+// filter(each _ > 2, {1, 2, 3})
+filter = (f as function, x as list) => List.Select(x, f)
+
+// reduce((state, current) => state + current, {1, 2, 3, 4, 5}, 0)
+reduce = (f as function, x as list, x0 as any) => List.Accumulate(x, x0, f)
+
+
+
+
