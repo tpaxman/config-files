@@ -67,14 +67,15 @@ git config --global user.name "user_name"
 git config --global user.email "email@email.com"
 ```
 
-## REFERENCES:
+## RESOURCES:
 
 [1] https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history
 [2] https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
 [3] https://stackoverflow.com/questions/38664421/how-do-i-call-git-diff-on-the-same-file-between-2-different-local-branches
 [4] https://clubmate.fi/git-removing-files-from-the-staging-area-and-the-tree/
 
-#    Configure line endings
+
+# Configure line endings
 #     Windows vs. Linux: https://barryvanveen.nl/blog/52-solving-inconsistent-line-endings-within-a-git-repository
 #     Example .gitattributes file: https://github.com/swisnl/gists/blob/master/gitattributes/.gitattributes
 #     GitHub answer: https://help.github.com/en/github/using-git/configuring-git-to-handle-line-endings\ refreshing-a-repository-after-changing-line-endings
