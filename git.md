@@ -1,6 +1,8 @@
 #   Git
 
-# SETUP A REPOSITORY AND REMOTE
+## Snippets
+
+### SETUP A REPOSITORY AND REMOTE
 
 ```bash
 git init                          # initialize repo
@@ -9,7 +11,7 @@ git remote add origin <repo_url>  # setup remote repo
 git push -u origin master         # push upstream from local to remote repo
 ```
 
-# ADD FILES
+### ADD FILES
 
 ```bash
 git add .             # add files in current folder to repo
@@ -18,7 +20,7 @@ git add -A            # add all
 git add -u            # add modified files
 ```
 
-# REMOVE FILES
+### REMOVE FILES
 
 ```bash
 git reset HEAD <filename>                     # unstage a file that was added
@@ -28,7 +30,7 @@ git rm --cached <file>                        # untrack files that are already i
 git rm -r --cached <folder>                   # untrack files that are already in repo: other way
 ```
 
-# DELETE BRANCHES
+### DELETE BRANCHES
 
 ```bash
 git branch -d branchname          # delete branch locally
@@ -36,7 +38,7 @@ git push -d origin branchname     # push deleted branch to remote
 git fetch --prune                 # prune deleted branches (--prune = -p)
 ```
 
-# DIFF FILES AND BRANCHES 
+### DIFF FILES AND BRANCHES 
 
 ```bash
 git diff branchA branchB -- file.py            # same file but different branches [3]
@@ -49,7 +51,7 @@ git diff -- ambiguous_name                     #  Treat ambiguous name as a file
 git diff --ignore-cr-at-eol --word-diff-regex="[^[:space:],]+"    # Diffs between words only
 ```
 
-# SHOW FILE CONTENTS
+### SHOW FILE CONTENTS
 
 ```bash
 git show --pretty="" --name-only 62c856a         # Show files in an old commit:
@@ -58,14 +60,14 @@ git log --all --full-history -- <path-to-file>   # Find out when file got delete
 git log -p bar                                   # show history of a file 
 ```
 
-# CONFIGURE USER DETAILS
+### CONFIGURE USER DETAILS
 
 ```bash
 git config --global user.name "user_name"
 git config --global user.email "email@email.com"
 ```
 
-# REFERENCES:
+## REFERENCES:
 
 [1] https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history
 [2] https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
