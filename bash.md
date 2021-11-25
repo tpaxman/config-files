@@ -16,6 +16,14 @@
 - find files over 5 GB: `find . -size +5G`
 - list all file paths recursively: `find . -type f`
 
+### History
+```bash
+history              # shows all history (including current)
+cat ~./bash_history  # shows all history from past sessions (not current)
+history n            # shows n most recent lines of history with numbers
+history -w /dev/stdout                # prints history without numbers
+history -w /dev/stdout | tail -n n    # prints n most recent lines of history without numbers
+```
 ### Dpkg/apt
 
 - see installed packages:`dpkg -l`
