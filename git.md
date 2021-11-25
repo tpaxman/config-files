@@ -1,14 +1,30 @@
 # Git
 
 ```bash
-git init   # initialize repo
-git add .   # add files in current folder to repo
-git commit -m "abc"   # commit with a message
-git clone --bare /path/to/repo   # clone a bare repo
-git remote add origin <remote_repository_url>   # setup remote repo
-git push -u origin master   # push upstream from local to remote repo
-git log -p bar   # show history of a file 
-git log --follow -p -- path-to-file   # show complete history of file (following renames) (https://stackoverflow.com/questions/278192/view-the-change-history-of-a-file-using-git-versioning#:~:text=Using%20git%20log%20%2D%2Dfollow,are%20included%20for%20each%20change)
+# initialize repo
+git init
+
+# add files in current folder to repo
+git add .
+
+# commit with a message
+git commit -m "abc"
+
+# clone a bare repo
+git clone --bare /path/to/repo
+
+# setup remote repo
+git remote add origin <remote_repository_url>
+
+# push upstream from local to remote repo
+git push -u origin master
+
+# show history of a file 
+git log -p bar
+
+# show complete history of file (following renames) (https://stackoverflow.com/questions/278192/view-the-change-history-of-a-file-using-git-versioning#:~:text=Using%20git%20log%20%2D%2Dfollow,are%20included%20for%20each%20change)
+git log --follow -p -- path-to-file
+
 ```
 ## Diff
 
