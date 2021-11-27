@@ -1,53 +1,29 @@
 # Vim
 
-## Commands
+### Set Commands
 
-All Vim colon commands
-https://gist.githubusercontent.com/0x0dea/da0758d9562cf32baebf/raw/5bb3e81b203c70c2c01c37b1e69813aeeb5fedc9/ex_cmds
-
-## Themes
-
-List of a bunch of vim themes
-https://github.com/rafi/awesome-vim-colorschemes
-
-Add a theme manually
-
-1. download ".vim" file, e.g.:
-```https://raw.githubusercontent.com/ajmwagar/vim-deus/master/colors/deus.vim```
-
-2. put in your the `vimfiles` folder (usually `~/.vim`):
-```~/.vim/colors/deus.vim```
-
-3. add this to your `~/.vimrc` file:
-```colors deus```
-
-## Options (set)
-
-http://vimdoc.sourceforge.net/htmldoc/options.html#'autoindent'
-Best links
-[Cheat sheet](https://vim.rtorr.com/)
-[Summary/tutorial](https://www.digitalocean.com/community/tutorials/installing-and-using-the-vim-text-editor-on-a-cloud-server)
-[comprehensive commands](https://www.keycdn.com/blog/vim-commands)
-
-## Configuration (`.vimrc`)
-
-Set 4-spaces for tabs
-
-```
-# add to ~/.vimrc
+```vimscript
 set tabstop=4       # The width of a TAB is set to 4 (but is still \t)
 set shiftwidth=4    # Indents will have a width of 4.
 set softtabstop=4   # Sets the number of columns for a TAB.
+
 set expandtab       # Expand TABs to spaces.
-```
-[stackoverflow explanation](https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim)
+set et
 
-Highlight search
+set noexpandtab     # turn off expand tab (for reverting back to using tabs for Makefiles)
+set noet
 
+set hlsearch        # highlight searches
+:nohlsearch         # turn off search highlighting
+:noh                # turn off search highlighting
 ```
-set hlsearch
-```
-## Mode Toggling
+
+### Mode Toggling
+
+thing | other thing
+---| ---
+enter normal mode | Esc, Ctrl-[
+
 
 - Enter normal mode: `Esc`, `Ctrl-[`
 - Enter insert mode:
@@ -62,14 +38,8 @@ set hlsearch
 - Enter command mode: type `:`
 - Insert mode --> normal mode (temporarily): `Ctrl-o` (lasts for one command and then goes back to insert mode)
 
-## Revert to tabs for Makefiles
+### Search
 
-- type `:set noet` (for noexpandtab) 
-- revert back by doing `:set et`
-
-## Search
-Turn off current search highlight
-`:noh` or `:nohlsearch` ([stackoverflow](https://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting))
 Search for word
 `/` searches forward
 `?` searches backward
@@ -106,7 +76,7 @@ This may be wanted after using `:set ignorecase` to make searches case insensiti
 
 [source](https://vim.fandom.com/wiki/Search_and_replace)
 
-## Normal Mode Editing
+### Normal Mode Editing
 
 Navigation ([src](https://vim.fandom.com/wiki/Moving_around))
     
@@ -154,3 +124,21 @@ Navigation ([src](https://vim.fandom.com/wiki/Moving_around))
 |LEFT  | h | b | B |   |   | 0 |
 |UP    | k ||||||
 |DOWN  | j ||||||
+
+### Add a color theme to ~/.vim/colors
+
+```bash
+mkdir ~/.vim/colors
+curl https://raw.githubusercontent.com/ajmwagar/vim-deus/master/colors/deus.vim > ~/.vim/colors/deus.vim
+echo "colors deus" >> ~/.vimrc
+```
+
+## RESOURCES:
+
+- All Vim colon commands: https://gist.githubusercontent.com/0x0dea/da0758d9562cf32baebf/raw/5bb3e81b203c70c2c01c37b1e69813aeeb5fedc9/ex_cmds
+- List of a bunch of vim themes: https://github.com/rafi/awesome-vim-colorschemes
+- Autoindenting: http://vimdoc.sourceforge.net/htmldoc/options.html#'autoindent'
+- Cheat sheet: https://vim.rtorr.com/
+- Summary/tutorial: https://www.digitalocean.com/community/tutorials/installing-and-using-the-vim-text-editor-on-a-cloud-server
+- comprehensive commands: https://www.keycdn.com/blog/vim-commands
+- Replace tab with 4 space: https://stackoverflow.com/questions/234564/tab-key-4-spaces-and-auto-indent-after-curly-braces-in-vim
