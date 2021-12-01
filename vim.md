@@ -20,23 +20,52 @@ set hlsearch        # highlight searches
 
 ### Mode Toggling
 
-thing | other thing
----| ---
-enter normal mode | Esc, Ctrl-[
-
-
-- Enter normal mode: `Esc`, `Ctrl-[`
-- Enter insert mode:
-    - at current character: `i`
-    - at next character: `a`
-    - at start of line: `I`
-    - at end of line: `A`
-- Enter visual mode
-    - enter "regular" visual mode: `v` (i.e. at current character)
-    - enter "line" visual mode: `V` (i.e. at start of line)
-    - enter "block" visual mode: `Ctrl-v` (for block selection)
-- Enter command mode: type `:`
-- Insert mode --> normal mode (temporarily): `Ctrl-o` (lasts for one command and then goes back to insert mode)
+Description | Command
+        --- | ---
+`Esc`, | normal mode
+`Ctrl-[` | normal mode
+`Ctrl-o` | Normal mode for one command
+`i` | insert mode at current character
+`a` | insert mode at next character
+`I` | insert mode at start of line
+`A` | insert mode at end of line
+`v`  | "regular" visual mode (i.e. at current character)
+`V`  | "line" visual mode (i.e. at start of line)
+`Ctrl-v` | "block" visual mode  (for block selection)
+`:` | command mode
+`h` | move left one character
+`j` | move down one character
+`k` | move up one character
+`l` | move right one character
+`w` | move to start of next word
+`W` | move to start of next character block
+`e` | move to end of next word
+`E` | move to end of next character block
+`b` | move to start of previous word
+`B` | move to start of previous character block
+`0` | move to start of line
+`$` | move to end of line
+`gg` | start of document
+`G` | end of document
+`x` | delete current character
+`dd` | delete current line
+`D` | delete from cursor to line end
+    - delete characters
+`diw` | current word
+`de` | from cursor to end of word
+`dw` | from cursor up to next word
+`db` | from cursor to beginning of word
+`dt<character>` | up to character
+    - delete neighboring character
+`dh` | to the left
+`dl` | to the right
+- Replace
+`r <character>` | replace current character
+`c` (puts vim into Insert Mode) | change text (in the direction that follows)
+`ci"` | change within quotation marks
+`ciw` | change within word
+`ce` | change to end of word
+`C` (puts vim into Insert Mode) | change text to end of line
 
 ### Search
 
@@ -80,40 +109,6 @@ This may be wanted after using `:set ignorecase` to make searches case insensiti
 
 Navigation ([src](https://vim.fandom.com/wiki/Moving_around))
     
-    - Move one space: left: `h`, down: `j`, up: `k`, right: `l`
-    - Move one word:
-        - start of next word: `w`
-        - start of next character block: `W`
-        - end of next word: `e`
-        - end of next character block `E`
-        - start of previous word: `b`
-        or character block `B`
-    - Line start/end
-        - start of line: `0`
-        - end of line: `$`
-    - Document start/end
-        - start of document: `gg`
-        - end of document: `G`
-- Deletion
-    - delete current character: `x`
-    - delete current line: `dd`
-    - delete from cursor to line end: `D`
-    - delete characters
-        - current word: `diw`
-        - from cursor to end of word: `de`
-        - from cursor up to next word: `dw`
-        - from cursor to beginning of word: `db`
-        - up to character: `dt<character>`
-    - delete neighboring character
-    - to the left: `dh`
-    - to the right: `dl`
-- Replace
-    - replace current character: `r <character>`
-    - change text (in the direction that follows): `c` (puts vim into Insert Mode)
-        - change within quotation marks: `ci"`
-        - change within word: `ciw`
-        - change to end of word: `ce`
-    - change text to end of line: `C` (puts vim into Insert Mode)
  
     
     

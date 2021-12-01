@@ -194,6 +194,10 @@ Diff
 ```python
 pd.Series([1,2,3,4]).diff() # --> [nan, 1, 1, 1]
 ```
+Some tricks
+```python
+df[df.columns[df.any()]]    # delete all columns that contain only empty values
+```
 
 ## Altair
 
