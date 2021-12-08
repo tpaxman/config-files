@@ -21,6 +21,4 @@ filter = (f as function, x as list) => List.Select(x, f)
 // reduce((state, current) => state + current, {1, 2, 3, 4, 5}, 0)
 reduce = (f as function, x as list, x0 as any) => List.Accumulate(x, x0, f)
 
-
-
-
+cartesian_product = (a as list, b as list) => List.Generate(()=>[i=0,j=0], each [i]<List.Count(a), each if [j]<List.Count(b)-1 then [i=[i], j=[j]+1] else [i=[i+1], j=0], each {a{[i]}, b{[j]})

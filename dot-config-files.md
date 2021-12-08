@@ -33,6 +33,12 @@ set hlsearch
 set ai
 ```
 
+# .minttyrc
+
+```bash
+CursorType=Block   # set the default cursor type to a block instead of line
+```
+
 # .bashrc
 
 This file contains some functions for use only on Ubuntu on Windows (WSL)

@@ -15,16 +15,31 @@ git push -u origin master         # push upstream from local to remote repo
 
 ```bash
 git add .             # add files in current folder to repo
-git commit -m "abc"   # commit with a message
 git add -A            # add all
 git add -u            # add modified files
+```
+
+# COMMIT
+```
+git commit -m "abc"   # commit with a message
+git commit --amend -m "update note"   # edit the previous commit message
+
+git add forgotten-file.txt
+git commit --amend --no-edit          # amend previous commit to include a file you forgot
+
+```
+### REVERT/RESET
+
+```bash
+git reset HEAD <filename>    # unstage a file that was added
+git reset HEAD               # unstage everything added
+git revert HEAD              # revert back to the previous commit without erasing subsequent work
+git revert laf452d           # revert back to previous commit
 ```
 
 ### REMOVE FILES
 
 ```bash
-git reset HEAD <filename>                     # unstage a file that was added
-git reset HEAD                                # unstage everything added
 git update-index --assume-unchanged <file>    # untrack files that are already in repo: best way [2]
 git rm --cached <file>                        # untrack files that are already in repo: other way
 git rm -r --cached <folder>                   # untrack files that are already in repo: other way
@@ -49,6 +64,7 @@ git diff --compact-summary branchB -- folder   # diff summary between folder bet
 git diff ambiguous_name --                     #  Treat ambiguous name as a branch name
 git diff -- ambiguous_name                     #  Treat ambiguous name as a file name
 git diff --ignore-cr-at-eol --word-diff-regex="[^[:space:],]+"    # Diffs between words only
+git diff --staged      # show differences in the staged files
 ```
 
 ### SHOW FILE CONTENTS

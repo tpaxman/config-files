@@ -16,6 +16,21 @@ set noet
 set hlsearch        # highlight searches
 :nohlsearch         # turn off search highlighting
 :noh                # turn off search highlighting
+
+set number      # turn on line numbering
+set nonumber    # turn off line numbering
+set nonu
+set nu!
+
+set relativenumber    # turn on relative line numbering
+set rnu
+set norelativenumber  # turn off relative line numbering
+set nornu
+
+set belloff=all    # turn off the flashing warning
+
+:h       # get help with a command
+:h :w    # get help with the write command
 ```
 
 ### Mode Toggling
@@ -47,6 +62,7 @@ Description | Command
 `$` | move to end of line
 `gg` | start of document
 `G` | end of document
+`22gg` | move to line 22
 `x` | delete current character
 `dd` | delete current line
 `D` | delete from cursor to line end
@@ -66,6 +82,9 @@ Description | Command
 `ciw` | change within word
 `ce` | change to end of word
 `C` (puts vim into Insert Mode) | change text to end of line
+`y` | yank (copy)
+`y$` | yank (copy) to end of line
+`"+y<move>` | copy to Windows clipboard
 
 ### Search
 

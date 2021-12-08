@@ -2,6 +2,11 @@
 
 ## COMMANDS
 
+```bash
+unzip aaa.zip -d dest     # unzip aaa.zip to folder 'dest'
+<some command> | sort -u  # print only unique lines (note uniq is not the tool for this)
+ls * | grep -E '\..*$' -o | sort -u     # print list of unique file extensions
+```
 ### Find
 
 - find file: `find . -type f -name "test1.txt"`
