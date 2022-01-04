@@ -13,6 +13,8 @@
 
 ## Pandas
 
+Non-equi join: https://stackoverflow.com/questions/46179362/fastest-way-to-merge-pandas-dataframe-on-ranges
+
 Melt multiple groups:
 
 ```python
@@ -501,3 +503,22 @@ Pip update package
 ```bash
 pip install Django --upgrade
 ```
+
+## Google API for Python
+
+```
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+curl https://raw.githubusercontent.com/googleworkspace/python-samples/master/sheets/quickstart/quickstart.py -o quickstart.py
+
+https://console.cloud.google.com/
+- APIs & Services
+- Credentials
+- Create Credentials
+- OAuth Client ID 
+- Download JSON
+- Move JSON to current dir and rename credentials.json
+
+Enable the Google Sheets API
+https://console.developers.google.com/apis/api/sheets.googleapis.com/overview?project=1001390277221
+
+

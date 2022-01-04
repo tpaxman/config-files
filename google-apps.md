@@ -1,8 +1,27 @@
 # Chrome
 
+- generate QR code: `https://chart.googleapis.com/chart?chs=150x150&cht=qr&choe=UTF-8&chl=<url>`
 - Open Bookmark manager: `Ctrl + Shift + O`
 
 - Move tab to new window (Vimium): `Shift + W`
+
+- Ctrl-n -- Open a new window
+- Ctrl-Shift-n -- Open a new window in Incognito mode
+- Ctrl-t -- Open a new tab, and jump to it
+- Ctrl-Shift-t -- Reopen previously closed tabs in the order they were closed
+- Ctrl-Tab or Ctrl-PgDn -- Jump to the next open tab
+- Ctrl-Shift-Tab or Ctrl-PgUp -- Jump to the previous open tab
+- Ctrl-1 through Ctrl-8 -- Jump to a specific tab
+- Ctrl-9 -- Jump to the rightmost tab
+- Alt-Home -- Open your home page in the current tab
+- Alt-Left arrow -- Open the previous page from your browsing history in the current tab
+- Alt-Right arrow -- Open the next page from your browsing history in the current tab
+- Ctrl-w or Ctrl-F4 -- Close the current tab
+- Ctrl-Shift-w or Alt-F4 -- Close the current window
+- Alt-Space then n -- Minimize the current window
+- Alt-Space then x -- Maximize the current window
+- Alt-f then x -- Quit Google Chrome
+
 
 # Gmail
 
@@ -82,6 +101,22 @@
 - Next video: `Shift+N`
 - Previous video: `Shift+P`
 - Search box: `/`
+
+# GOOGLE DRIVE
+| Action | Key Combination |
+| --- | --- |
+| Select first item in list | g l |
+| Select sidebar | g n |
+| Go up one level | g p |
+| Rename | n |
+| Star | s |
+| Delete | Shift + 3 |
+| Open | o |
+| Move | z |
+| Create something | c |
+| Create folder | Shift + f |
+| Create doc | Shift + t |
+| Create spreadsheet Shift + s |
 
 
 # Google Apps Script

@@ -7,6 +7,23 @@ unzip aaa.zip -d dest     # unzip aaa.zip to folder 'dest'
 <some command> | sort -u  # print only unique lines (note uniq is not the tool for this)
 ls * | grep -E '\..*$' -o | sort -u     # print list of unique file extensions
 ```
+
+## command line editing
+- Delete next word: Alt-D
+- Delete prev word: Ctrl-W | Ctrl-X + Backspace
+- Remove character: Ctrl+D or Delete – remove or deletes the character under the cursor.
+- Ctrl+K – removes all text from the cursor to the end of the line.
+- 
+
+### Bash Bang Commands
+- !! – execute last command.
+- !top – execute the most recent command that starts with ‘top’ (e.g. !).
+- !top:p – displays the command that !top would run (also adds it as the latest command in the command history).
+- !$ – execute the last word of the previous command (same as Alt +., e.g. if last command is ‘cat tecmint.txt’, then !$ would try to run ‘tecmint.txt’).
+- !$:p – displays the word that !$ would execute.
+- !* – displays the last word of the previous command.
+- !*:p – displays the last word that !* would substitute.
+
 ### Find
 
 - find file: `find . -type f -name "test1.txt"`
@@ -20,6 +37,13 @@ ls * | grep -E '\..*$' -o | sort -u     # print list of unique file extensions
 - find files over 5 KB: `find . -size +5k`
 - find files over 5 GB: `find . -size +5G`
 - list all file paths recursively: `find . -type f`
+
+-OPTIONS:
+    - size # takes M k or G 
+    - mtime # days
+    - mmin
+    - cmin, ctime # change minutes or days
+    - amin, atime # access minutes or days
 
 ### History
 ```bash
