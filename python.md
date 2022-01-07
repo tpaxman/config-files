@@ -520,5 +520,11 @@ https://console.cloud.google.com/
 
 Enable the Google Sheets API
 https://console.developers.google.com/apis/api/sheets.googleapis.com/overview?project=1001390277221
+```
+
+## Others
+```
+def flatten_list(lst: list) -> list:
+    return [item for sublist in lst for item in sublist]
 
 

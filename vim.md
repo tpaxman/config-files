@@ -1,5 +1,10 @@
 # Vim
 
+### Useful Actions
+```
+ciw <CTRL-R> 0       # Replace word with yanked word
+```
+
 ### Set Commands
 
 ```vimscript
