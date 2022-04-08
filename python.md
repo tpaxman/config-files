@@ -528,3 +528,19 @@ def flatten_list(lst: list) -> list:
     return [item for sublist in lst for item in sublist]
 
 
+## Sets
+```
+# General syntax
+```
+method | operator
+--- | --- 
+`union` | `|`
+`intersection` | `&`
+`difference` | `-`
+`symmetric_difference` | `^`
+`isdisjoint` | `<none>`
+`issubset` | `<=`
+`issuperset` | `>=`
+`<none>` | `<` (proper subset)
+`<none>` | `>` (proper superset)
+
