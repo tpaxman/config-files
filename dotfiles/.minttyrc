@@ -1,0 +1,2 @@
+# set the default cursor type to a block instead of line
+CursorType=Block
