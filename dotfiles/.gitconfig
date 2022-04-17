@@ -51,6 +51,7 @@ au = add -u; git s
 ap = add -p
 aa = add .
 ac = !git add -A && git commit -m
+auc = !git add -u && git commit -m
 c = commit --verbose
 ca = commit -a --verbose
 cm = commit -m
