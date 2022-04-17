@@ -13,3 +13,6 @@ set hlsearch
 
 " set auto indent
 set ai
+
+" turn off flashing bell
+set belloff=all
