@@ -27,6 +27,9 @@ tag.contents # (returns a list of direct children)
 tag.children # (returns a generator of direct children)
 tag.descendants # (returns generator or all children recursively)
 
+# find by class:
+tag.find(class_='name-of-class')
+tag.find(attrs={'class': 'name-of-class'})
 
 def soupify_url(url: str) -> BeautifulSoup:
     return BeautifulSoup(requests.get(url).text)
