@@ -588,6 +588,6 @@ Symmetric difference|`symmetric_difference` | `^`
 Disjoint|`isdisjoint` | `<none>`
 Subset|`issubset` | `<=`
 Superset|`issuperset` | `>=`
-Proper subset|`<none>` | `<` 
-Proper superset|`<none>` | `>`
+Proper subset| none | `<` 
+Proper superset| none | `>`
 
