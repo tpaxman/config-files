@@ -579,15 +579,15 @@ def flatten_list(lst: list) -> list:
 ```
 
 ## General set syntax
-method | operator
---- | --- 
-`union` | `\|`
-`intersection` | `&`
-`difference` | `-`
-`symmetric_difference` | `^`
-`isdisjoint` | `<none>`
-`issubset` | `<=`
-`issuperset` | `>=`
-`<none>` | `<` (proper subset)
-`<none>` | `>` (proper superset)
+operation | method | operator
+---| --- | --- 
+Union|`union` | `\|`
+Intersection|`intersection` | `&`
+Difference|`difference` | `-`
+Symmetric difference|`symmetric_difference` | `^`
+Disjoint|`isdisjoint` | `<none>`
+Subset|`issubset` | `<=`
+Superset|`issuperset` | `>=`
+Proper subset|`<none>` | `<` 
+Proper superset|`<none>` | `>`
 
