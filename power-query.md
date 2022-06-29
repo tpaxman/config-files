@@ -1,6 +1,39 @@
 # POWER QUERY
 
 
+## Get value from named range cell
+```
+(rangename as text) as any => Excel.CurrentWorkbook(){[Name=rangename]}[Content]{0}[Column1]
+```
+
+## Read from Database
+```
+# basic: does not fold after
+Sql.Database(server, database, [Query=sql])
+
+# native query + enable folding: folds (if simple)
+Value.NativeQuery(Sql.Database(server, database), sql, null, [EnableFolding=true])
+
+# native query + enablefolding + params: does not fold when you include parameters
+Value.NativeQuery(Sql.Database(server, database), sql, params, [EnableFolding=true])
+
+# native query + enable 
+Value.NativeQuery(Sql.Database(server, database), Text.Format(sql, params), null, [EnableFolding=true])
+```
+
+
+
+## Read plain text file
+
+```
+read_textfile = (filename as text, optional encoding as number) as text =>
+    let
+        encoding_used = if encoding <> null then encoding else TextEncoding.Windows,
+        Contents.ToLines = (contents as binary) as list => Line.FromBinary(contents, null, null, encoding_used)
+    in
+        compose({File.Contents, Contents.ToLines, Lines.ToText})(filename)
+```
+
 
 ## Find Columns with Errors
 ```
@@ -40,6 +73,7 @@ Table.FromColumns({{1, 3}, {"x", "y"}}, {"a", "b"}})
 
 
 ## Comparison with Python
+
 PYTHON | POWER QUERY
 --- | ---
 `a = [1, 2, 3]`, `a = (1, 2, 3)` | `a = {1, 2, 3}`
@@ -83,3 +117,4 @@ reduce = (f as function, x as list, x0 as any) => List.Accumulate(x, x0, f)
 ```
 cartesian_product = (a as list, b as list) => List.Generate(()=>[i=0,j=0], each [i]<List.Count(a), each if [j]<List.Count(b)-1 then [i=[i], j=[j]+1] else [i=[i+1], j=0], each {a{[i]}, b{[j]})
 ```
+
