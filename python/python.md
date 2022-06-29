@@ -1,5 +1,79 @@
 # Python
 
+## Query a database
+```python
+import pyodbc
+connection_string = "DRIVER={SQL Server};SERVER=servername;DATABASE=databasename"
+sql = "SELECT * FROM table"
+with pyodbc.connect(connection_string) as c:
+    return pd.read_sql(sql, c)
+```
+
+
+## Transform column types to ordered categorical
+```
+import pandas as pd
+from pandas.api.types import CategoricalDtype
+
+# one way
+pd.Series(pd.Categorical(series, categories=series.unique(), ordered=True))
+
+# another way
+series.astype(CategoricalDType(categories=series.unique(), ordered=True))
+```
+
+## Clean column names
+```
+import re
+def clean_colname(colname: str) -> str:
+    return re.sub('\w+', '_', colname).strip('_').lower()
+```
+
+
+## Convert Excel serial dates to datetime
+```
+from datetime import datetime, timedelta
+def from_excel_ordinal(ordinal, _epoch0=datetime(1899, 12, 31)):
+    if ordinal >= 60:
+        ordinal -= 1 # Excel leap year bug, 1900 is not a leap year
+    return (_epoch0 + timedelta(days=ordinal)).replace(microsecond=0)
+```
+
+
+## Argparse argument with either 0 or 1
+```python
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('-a', nargs='?', const='x', default='y')
+args = parser.parse_args()
+print(args.a)
+```
+
+```bash
+$ python script.py -a    # returns 'x' (const)
+$ python script.py -a h  # returns 'h' (the provided value)
+$ python script.py       # returns 'y' (default)
+```
+
+## Pad format strings
+```
+message = 'something'
+fill = ' '
+align = '<'
+width = 10
+f'{message:{fill}{align}{width}}'
+```
+
+## Get sheet names from Excel file
+```python
+pip install openpyxl pandas
+import pathlib
+import pandas as pd
+def get_sheet_names(filepath: str) -> list:
+    with pd.ExcelFile(filepath) as f:
+        return f.sheet_names
+```
+
 ## Seaborn
 
 - color pallette examples: [(src)](https://medium.com/@morganjonesartist/color-guide-to-seaborn-palettes-da849406d44f)
