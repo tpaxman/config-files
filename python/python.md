@@ -11,7 +11,7 @@ with pyodbc.connect(connection_string) as c:
 
 
 ## Transform column types to ordered categorical
-```
+```python
 import pandas as pd
 from pandas.api.types import CategoricalDtype
 
@@ -23,7 +23,7 @@ series.astype(CategoricalDType(categories=series.unique(), ordered=True))
 ```
 
 ## Clean column names
-```
+```python
 import re
 def clean_colname(colname: str) -> str:
     return re.sub('\w+', '_', colname).strip('_').lower()
@@ -31,7 +31,7 @@ def clean_colname(colname: str) -> str:
 
 
 ## Convert Excel serial dates to datetime
-```
+```python
 from datetime import datetime, timedelta
 def from_excel_ordinal(ordinal, _epoch0=datetime(1899, 12, 31)):
     if ordinal >= 60:
@@ -56,7 +56,7 @@ $ python script.py       # returns 'y' (default)
 ```
 
 ## Pad format strings
-```
+```python
 message = 'something'
 fill = ' '
 align = '<'
@@ -580,7 +580,7 @@ pip install Django --upgrade
 
 ## Google API for Python
 
-```
+```python
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 curl https://raw.githubusercontent.com/googleworkspace/python-samples/master/sheets/quickstart/quickstart.py -o quickstart.py
 
@@ -597,15 +597,15 @@ https://console.developers.google.com/apis/api/sheets.googleapis.com/overview?pr
 ```
 
 ## Others
-```
+```python
 def flatten_list(lst: list) -> list:
     return [item for sublist in lst for item in sublist]
 
 
 ## Sets
 ```
-# General syntax
-```
+
+## General syntax
 method | operator
 --- | --- 
 `union` | `|`
