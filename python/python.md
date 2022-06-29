@@ -9,17 +9,20 @@ with pyodbc.connect(connection_string) as c:
     return pd.read_sql(sql, c)
 ```
 
+## Ordered categorical with inferred categories
 
-## Transform column types to ordered categorical
 ```python
 import pandas as pd
 from pandas.api.types import CategoricalDtype
 
-# one way
-pd.Series(pd.Categorical(series, categories=series.unique(), ordered=True))
+# You can't get ordered categorical by doing this (default is unordered):
+series.astype('category')
 
-# another way
-series.astype(CategoricalDType(categories=series.unique(), ordered=True))
+# This will work:
+series.astype(pd.CategoricalDType(categories=series.unique(), ordered=True))
+
+# So will this:
+pd.Series(pd.Categorical(series, categories=series.unique(), ordered=True))
 ```
 
 ## Clean column names
@@ -85,11 +88,11 @@ def get_sheet_names(filepath: str) -> list:
 
 - Move file: `sourcefilepath.replace(destfilepath)`
 
-## Pandas
+## Non-equi joins
 
-Non-equi join: https://stackoverflow.com/questions/46179362/fastest-way-to-merge-pandas-dataframe-on-ranges
+https://stackoverflow.com/questions/46179362/fastest-way-to-merge-pandas-dataframe-on-ranges
 
-Melt multiple groups:
+## Melt multiple groups:
 
 ```python
 data = pd.DataFrame({"ID": [1,2,3], "A1": [3,6,3], "A2": [4,9,2], "B1": [3,4,5], "B2": [1,1,1]})
@@ -99,13 +102,13 @@ def multi_melt(data, d):
 multi_melt(data, d)
 ```
 
-Merge, Join, Concat
+## Merge, Join, Concat
 
 - `merge` - inner join by default: `pd.merge(df1, df2, left_index=True, right_index=True)`
 - `join` - left join by default: `df1.join(df2)`
 - `concat` - outer join by default: `pd.concat([df1, df2], axis=1)`
     
-Transform - Make column showing number of unique for the group
+## Transform - Make column showing number of unique for the group
 
 ```python
 # instead of this (joining a grouped copy of the table to itself):
@@ -115,20 +118,8 @@ data.set_index('index').join(data.groupby('index').agg(lambda x: len(set(x))), r
 data['foo_distinctgroupcount'] = data.groupby('index').transform(lambda x: len(set(x)))
 ```
 
-Ordered categorical with inferred categories
 
-```python
-# You can't get ordered categorical by doing this (default is unordered):
-series.astype('category')
-
-# This will work:
-series.astype(pd.CategoricalDType(categories=series.unique(), ordered=True))
-
-# So will this:
-pd.Series(pd.Categorical(series, categories=series.unique(), ordered=True))
-```
-
-Expand grid / Mesh Grid / Perms table
+## Expand grid / Mesh Grid / Perms table
 
 ```python
 import itertools
@@ -137,7 +128,7 @@ perms_dict = {'sport': ['basketball', 'soccer'], 'year': [2018, 2019, 2020]}
 df = pd.DataFrame(itertools.product(*perms_dict.values()), columns=perms_dict.keys())
 ```
 
-Read Excel from a URL:
+## Read Excel from a URL:
 
 ```python
 
@@ -150,21 +141,20 @@ with io.BytesIO(r.content) as f:
 df = pd.DataFrame(wb['Page1-1'].values)
 ```
 
-Set display settings for Pandas objects
+## Set display settings for Pandas objects
 
 ```python
 pd.options.display.max_rows = 16
 pd.options.display.max_columns = 500
 ```
 
-Reset display settings
+## Reset display settings
 
 ```python
 pd.reset_option('display.max_rows')
 ```
 
-Pivot vs. Stack
-
+## Pivot vs. Stack
 
 - Pivot Cookbook: https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook-pivot
 - Pivot DataFrame: https://stackoverflow.com/questions/47152691/how-to-pivot-a-dataframe
@@ -181,7 +171,7 @@ g.pivot_table(index=['risktype', 'fail_mode'], columns=['well'])
 g.set_index(['risktype', 'fail_mode']).pivot_table(columns='well')
 ```
 
-Vectorized operations on dataframe - speed comparison
+## Vectorized operations on dataframe - speed comparison
 
 ```python
 import pandas as pd
@@ -217,7 +207,9 @@ vf(df.b, df.c, df.d)   # 136 ms (800x faster)
 f(df.b, df.c, df.d)   # 3 ms (36700x faster)
 ```
 
-Split one column into multiple \[[src](https://cmdlinetips.com/2018/11/how-to-split-a-text-column-in-pandas/)\]
+## Split one column into multiple
+
+[src](https://cmdlinetips.com/2018/11/how-to-split-a-text-column-in-pandas/)
 
 ```python
 # example raw data
@@ -230,7 +222,7 @@ split_cols = df['raw'].str.split(',', expand=True).rename(columns=dict(enumerate
 df_joined = df.join(split_cols)
 ```
 
-Where method
+## Where method
 
 ```python
 df = pd.DataFrame({'a': [10,20,30,40,50,60,70], 'b': [1,8,6,5,4,8,6]})
@@ -242,7 +234,7 @@ method2 = np.where(df.b < 5, df.a, 0)`
 # result --> array([10,  0,  0,  0, 50,  0,  0], dtype=int64)`
 ```
     
-Groupby
+## Groupby
 
 - Iterating through groupby: `for index_tuple, df_group in df.groupby([....]):`
     
@@ -258,26 +250,27 @@ Groupby
  .astype(int))
  ```
 
-Shift
+## Shift
 
 ```python
 pd.Series([1,2,3,4]).shift()   # --> [nan, 1, 2, 3]
 pd.Series([1,2,3,4]).shift(-1) # --> [2, 3, 4, nan]
 ```
 
-Diff
+## Diff
 
 ```python
 pd.Series([1,2,3,4]).diff() # --> [nan, 1, 1, 1]
 ```
-Some tricks
+
+## Delete columns containing only empty values
 ```python
 df[df.columns[df.any()]]    # delete all columns that contain only empty values
 ```
 
 ## Altair
 
-Pre-made color schemes ([List of schemes](https://vega.github.io/vega/docs/schemes/))
+### Pre-made color schemes ([List of schemes](https://vega.github.io/vega/docs/schemes/))
 
 ```python
 alt.Chart(iris).mark_point().encode(
@@ -287,7 +280,7 @@ alt.Chart(iris).mark_point().encode(
 )
 ```
 
-Custom color scheme with 'domain' and 'range' ([source](https://altair-viz.github.io/user_guide/customization.html?highlight=color%20schemes))
+### Custom color scheme with 'domain' and 'range' ([source](https://altair-viz.github.io/user_guide/customization.html?highlight=color%20schemes))
 
 ```python
 d= ['setosa', 'versicolor', 'virginica']
@@ -300,7 +293,7 @@ alt.Chart(iris).mark_point().encode(
 )
 ```
 
-Adjusting axes domains with clip=True ([source](https://altair-viz.github.io/user_guide/customization.html))
+### Adjusting axes domains with clip=True ([source](https://altair-viz.github.io/user_guide/customization.html))
 
 ```python
 alt.Chart(cars).mark_point(clip=True).encode(
@@ -312,7 +305,7 @@ alt.Chart(cars).mark_point(clip=True).encode(
 ```
 
 
-Plotting facets
+### Plotting facets
 
 ```python
 (alt
@@ -329,7 +322,7 @@ Plotting facets
 
 ## Map, Filter, Comprehensions
 
-Map
+### Map
 
 ```python
 # this
@@ -339,7 +332,7 @@ map(str, s)
 (str(i) for i in s)
 ```
 
-Filter
+### Filter
 
 ```python
 # this:
@@ -411,6 +404,7 @@ def calc_type_c(input_value):
 - map dict: `list(map({'A':1, 'B': 2, 'C': 4}.get,'ABC'))`
 - create list: `list(map(f,arr))` --> `[*map(f,arr)]`
 - double loops:
+
 ```python
 # replace:
 for i in range(m):
@@ -424,7 +418,6 @@ for k in range(m*n):
 
 ## Linear Regression
 
-sklearn
 ```python
 import numpy as np
 from sklearn.linear_model import LinearRegression
@@ -439,17 +432,13 @@ intercept = model.intercept_
 r_sq = model.score(x,y)
 ```
 
-## Strings
-
-Alternatext
+## Make Alternatext
 
 ```python
 ''.join(x.upper() if i % 2 else x.lower() for i, x in enumerate(some_text))
 ```
 
-## Read/write
-
-Convert string to file IO object
+## Convert string to file IO object
 
 ```python
 import io
@@ -458,9 +447,7 @@ with io.StringIO('<html><body><table> ... ') as f:
     df = pd.read_html(f)
 ```
 
-## Type Checking
-
-Check if is iterable
+## Check if object is iterable
 
 ```python
 def is_iterable(x):
@@ -474,7 +461,7 @@ def is_iterable(x):
 ```
 [stackoverflow](https://stackoverflow.com/questions/1952464/in-python-how-do-i-determine-if-an-object-is-iterable)
 
-If you want the arg to be either `None` or something else:
+## If you want the arg to be either `None` or something else:
 
 ```python
 from typing import Optional
@@ -486,9 +473,8 @@ def foo(arg: bool = None):
     ...
 ```
 
-## Webscraping
 
-Read a json file from a github raw url:
+## Read a json file from a github raw url:
 
 ```python
 import json, requests, io
@@ -496,7 +482,7 @@ url = f"https://raw.githubusercontent.com/SMenigat/thousand-most-common-words/ma
 d = json.load(io.BytesIO(requests.get(url).content)) 
 ```
 
-Selenium - get attribute names and values
+## Selenium - get attribute names and values
 
 ```python
 from selenium import webdriver
@@ -508,7 +494,7 @@ def _get_element_attributes(elem: WebElement) -> dict:
     return attributes_dict
 ```
 
-Get soup from url
+## Get soup from url
 
 ```python
 import requests
@@ -521,7 +507,7 @@ def get_soup(url):
     return soup
 ```
 
-Download a large file:
+## Download a large file:
 
 ```python
 import requests
@@ -534,7 +520,7 @@ with open(output_file, 'wb') as f:
         f.write(chunk)
 ```
 
-Download zipfiles
+## Download zipfiles
 
 ```python
 import io, zipfile, pathlib, requests
@@ -562,20 +548,10 @@ logging.debug('This will get logged')
 [source](https://realpython.com/python-logging/)
 
 
-## Json
-
-Pretty-print json file
+## Pretty-print json file
 
 ```python
  python -m json.tool tableExport.json
-```
-
-## Pip
-
-Pip update package
-
-```bash
-pip install Django --upgrade
 ```
 
 ## Google API for Python
@@ -596,19 +572,16 @@ Enable the Google Sheets API
 https://console.developers.google.com/apis/api/sheets.googleapis.com/overview?project=1001390277221
 ```
 
-## Others
+## Flatten list
 ```python
 def flatten_list(lst: list) -> list:
     return [item for sublist in lst for item in sublist]
-
-
-## Sets
 ```
 
-## General syntax
+## General set syntax
 method | operator
 --- | --- 
-`union` | `|`
+`union` | `\|`
 `intersection` | `&`
 `difference` | `-`
 `symmetric_difference` | `^`
