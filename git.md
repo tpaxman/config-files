@@ -1,8 +1,6 @@
-#   Git
+# GIT
 
-## Snippets
-
-### SETUP A REPOSITORY AND REMOTE
+## Setup a repository and remote
 
 ```bash
 git init                          # initialize repo
@@ -11,7 +9,7 @@ git remote add origin <repo_url>  # setup remote repo
 git push -u origin master         # push upstream from local to remote repo
 ```
 
-### ADD FILES
+### Add files
 
 ```bash
 git add .             # add files in current folder to repo
@@ -19,16 +17,16 @@ git add -A            # add all
 git add -u            # add modified files
 ```
 
-# COMMIT
-```
+## Commit
+```bash
 git commit -m "abc"   # commit with a message
 git commit --amend -m "update note"   # edit the previous commit message
 
 git add forgotten-file.txt
 git commit --amend --no-edit          # amend previous commit to include a file you forgot
-
 ```
-### REVERT/RESET
+
+## Revert/reset
 
 ```bash
 git reset HEAD <filename>    # unstage a file that was added
@@ -37,7 +35,7 @@ git revert HEAD              # revert back to the previous commit without erasin
 git revert laf452d           # revert back to previous commit
 ```
 
-### REMOVE FILES
+## Remove files
 
 ```bash
 git update-index --assume-unchanged <file>    # untrack files that are already in repo: best way [2]
@@ -45,7 +43,7 @@ git rm --cached <file>                        # untrack files that are already i
 git rm -r --cached <folder>                   # untrack files that are already in repo: other way
 ```
 
-### DELETE BRANCHES
+## Delete branches
 
 ```bash
 git branch -d branchname          # delete branch locally
@@ -53,7 +51,7 @@ git push -d origin branchname     # push deleted branch to remote
 git fetch --prune                 # prune deleted branches (--prune = -p)
 ```
 
-### DIFF FILES AND BRANCHES 
+## Diff files and branches 
 
 ```bash
 git diff branchA branchB -- file.py            # same file but different branches [3]
@@ -67,7 +65,7 @@ git diff --ignore-cr-at-eol --word-diff-regex="[^[:space:],]+"    # Diffs betwee
 git diff --staged      # show differences in the staged files
 ```
 
-### SHOW FILE CONTENTS
+## Show file contents
 
 ```bash
 git show --pretty="" --name-only 62c856a         # Show files in an old commit:
@@ -76,14 +74,14 @@ git log --all --full-history -- <path-to-file>   # Find out when file got delete
 git log -p bar                                   # show history of a file 
 ```
 
-### CONFIGURE USER DETAILS
+## Configure user details
 
 ```bash
 git config --global user.name "user_name"
 git config --global user.email "email@email.com"
 ```
 
-## RESOURCES:
+# RESOURCES:
 
 [1] https://stackoverflow.com/questions/7203515/git-how-to-find-a-deleted-file-in-the-project-commit-history
 [2] https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore
@@ -91,7 +89,7 @@ git config --global user.email "email@email.com"
 [4] https://clubmate.fi/git-removing-files-from-the-staging-area-and-the-tree/
 
 
-### Configure line endings
+## Configure line endings
 
  - Windows vs. Linux: https://barryvanveen.nl/blog/52-solving-inconsistent-line-endings-within-a-git-repository
  - Example .gitattributes file: https://github.com/swisnl/gists/blob/master/gitattributes/.gitattributes
@@ -101,3 +99,11 @@ git config --global user.email "email@email.com"
  - issues with autocrlf: https://www.edwardthomson.com/blog/git\_for\_windows\_line\_endings.html
  - Simple (reliable or not?) blog post: https://jessitron.com/2019/11/11/line-endings-in-git/
  - git config credential.helper store
+
+## GitHub Setup
+
+- Tokens are now required instead of account password
+- To create token go to https://github.com/settings/tokens
+- After cloning the repo and making changes, do `git push`
+- Enter username for username
+- Enter the token for password

@@ -1,4 +1,4 @@
-# Python
+# PYTHON
 
 ## Query a database
 ```python
@@ -77,7 +77,7 @@ def get_sheet_names(filepath: str) -> list:
         return f.sheet_names
 ```
 
-## Seaborn
+## Seaborn info
 
 - color pallette examples: [(src)](https://medium.com/@morganjonesartist/color-guide-to-seaborn-palettes-da849406d44f)
 - add log-scale: `sns.relplot(...).set(yscale="log")` [(src)](https://www.datacamp.com/community/tutorials/seaborn-python-tutorial#log)
@@ -222,7 +222,7 @@ split_cols = df['raw'].str.split(',', expand=True).rename(columns=dict(enumerate
 df_joined = df.join(split_cols)
 ```
 
-## Where method
+## Where - Pandas/Numpy
 
 ```python
 df = pd.DataFrame({'a': [10,20,30,40,50,60,70], 'b': [1,8,6,5,4,8,6]})
@@ -234,7 +234,7 @@ method2 = np.where(df.b < 5, df.a, 0)`
 # result --> array([10,  0,  0,  0, 50,  0,  0], dtype=int64)`
 ```
     
-## Groupby
+## Pandas groupby
 
 - Iterating through groupby: `for index_tuple, df_group in df.groupby([....]):`
     
@@ -250,14 +250,14 @@ method2 = np.where(df.b < 5, df.a, 0)`
  .astype(int))
  ```
 
-## Shift
+## Pandas shift
 
 ```python
 pd.Series([1,2,3,4]).shift()   # --> [nan, 1, 2, 3]
 pd.Series([1,2,3,4]).shift(-1) # --> [2, 3, 4, nan]
 ```
 
-## Diff
+## Pandas diff
 
 ```python
 pd.Series([1,2,3,4]).diff() # --> [nan, 1, 1, 1]
@@ -320,9 +320,7 @@ alt.Chart(cars).mark_point(clip=True).encode(
 ```
 
 
-## Map, Filter, Comprehensions
-
-### Map
+## Map
 
 ```python
 # this
@@ -332,7 +330,7 @@ map(str, s)
 (str(i) for i in s)
 ```
 
-### Filter
+## Filter
 
 ```python
 # this:
@@ -369,7 +367,6 @@ def calc_type_b(input_value):
 def calc_type_c(input_value):
     assert is_valid_input(input_value)
     return input_value + 3
-
 
 
 def calc_any_type(input_value, calc_type):
@@ -473,7 +470,6 @@ def foo(arg: bool = None):
     ...
 ```
 
-
 ## Read a json file from a github raw url:
 
 ```python
@@ -507,7 +503,7 @@ def get_soup(url):
     return soup
 ```
 
-## Download a large file:
+## Download a large file in chunks
 
 ```python
 import requests
@@ -578,7 +574,7 @@ def flatten_list(lst: list) -> list:
     return [item for sublist in lst for item in sublist]
 ```
 
-## General set syntax
+## Sets
 operation | method | operator
 ---| --- | --- 
 Union|`union` | `\|`
@@ -591,3 +587,219 @@ Superset|`issuperset` | `>=`
 Proper subset| none | `<` 
 Proper superset| none | `>`
 
+
+
+## Putting HTML info BeautifulSoup
+```python
+# get soup from url:
+response = requests.get(url)
+html_text = response.text
+soup = BeautifulSoup(html_text, "html.parser")
+
+# get soup from file:
+with open(filename) as f:
+    soup = BeautifulSoup(f, 'html.parser')
+
+# get soup from string:
+soup = BeautifulSoup('<b class="boldest">Extremely bold</b>', 'html.parser')
+
+# Function definitions:
+def soupify_url(url: str) -> BeautifulSoup:
+    return BeautifulSoup(requests.get(url).text)
+
+
+def soupify_file(filename):
+    with open(filename, encoding='utf-8') as f:
+        return BeautifulSoup(f.read())
+
+
+def download_page_source_to_file(url: str, filename: str) -> None:
+    response = requests.get(url)
+    content = response.text
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(content)
+```
+
+## Parse BeautifulSoup tags
+```python
+# get tag:
+b_tag = soup.b
+
+# get name of tag:
+b_tag.name  # 'b'
+
+# get an attribute from tag:
+b_tag['class']
+b_tag.attrs['class']  # 'boldest'
+
+# get tag's children:
+tag.contents # (returns a list of direct children)
+tag.children # (returns a generator of direct children)
+tag.descendants # (returns generator or all children recursively)
+
+# find by class:
+tag.find(class_='name-of-class')
+tag.find(attrs={'class': 'name-of-class'})
+```
+
+## Series: vectorized functions speed
+```python
+import numpy as np
+import pandas as pd
+
+def bad_for_vectors(a):
+ return a + 1 if a < 100 else a - 1
+
+def good_for_vectors(a):
+ return np.where(a < 100, a + 1, a - 1)
+
+s = pd.Series(np.linspace(0, 200, int(1e5)))
+```
+
+```
+# %timeit s.apply(bad_for_vectors)
+# %timeit [bad_for_vectors(x) for x in s]
+# %timeit [bad_for_vectors(x) for x in s.values]
+# %timeit np.vectorize(bad_for_vectors)(s)
+# %timeit good_for_vectors(s)
+
+# 23.9 ms ± 520 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+# 23.8 ms ± 173 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+# 63.2 ms ± 3.02 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+# 20 ms ± 670 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+# 892 µs ± 4.61 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+```
+
+## DataFrames: vectorized functions speed
+```python
+import numpy as np
+import pandas as pd
+
+def bad_for_vectors(a, b):
+ return a + 1 if a < b else b + 1
+
+def good_for_vectors(a, b):
+ return np.where(a < b, a + 1, b + 1)
+
+df = pd.DataFrame({'a': np.linspace(0, 200, int(1e5)), 'b': np.linspace(0, 500, int(1e5))})
+```
+
+```
+%timeit df.assign(val=lambda x: x.apply(lambda r: bad_for_vectors(r.a, r.b), axis=1))
+%timeit df.assign(val=lambda x: np.vectorize(bad_for_vectors)(x.a, x.b))
+%timeit df.assign(val=lambda x: good_for_vectors(x.a, x.b))
+
+# 2.49 s ± 48.6 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+# 23.4 ms ± 339 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+# 2.03 ms ± 39.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+```
+
+### Findings:
+
+- apply is the slowest by far
+- using np.vectorize first gives about 100x performance boost
+- re-writing the function with numpy vectors gives ~1000x performance boost
+DataFrames method chaining
+
+```python
+# This script is to compare the differences in speed when doing a few method
+# chaining calculations in pandas dataframes.
+
+import numpy as np
+import pandas as pd
+
+# DUMMY FUNCTIONS: These are two dummy test functions to be used on the dataframe:
+def calc_c(a, b):
+    """ this function is vector compatible"""
+    return a * b
+
+
+def calc_compare(a, b):
+    """ this function is not vector compatible"""
+    if a < b:
+        val = a
+    else:
+        val = b
+    return val
+
+
+# TEST METHODS: ---------------------------------------------------------
+def test_method_0(df):
+    """METHOD 0: using the apply method"""
+    df_out = (df
+        .assign(c=lambda x: x.apply(lambda r: calc_c(r.a, r.b), axis=1))
+        .assign(area=lambda x: x.apply(lambda r: calc_compare(r.a, r.b), axis=1))
+        .loc[lambda x: x.c > 4000]
+        )
+    return df_out
+
+
+def test_method_1(df):
+    """METHOD 1: vectorize the functions"""
+    # This is where the functions are vectorized using numpy vectorize
+    calc_compare_vector = np.vectorize(calc_compare)
+    calc_c_vector = np.vectorize(calc_c)
+
+    df_out = (df
+        .assign(c=lambda x: calc_c_vector(x.a, x.b))
+        .assign(area=lambda x: calc_compare_vector(x.a, x.b))
+        .loc[lambda x: x.c > 4000]
+        )
+    return df_out
+
+
+def test_method_2(df):
+    """METHOD 2: use pre-vectorized functions (rewritten using vectorized statements)"""
+    calc_c_prevec = calc_c  # this function is already vectorized
+
+    def calc_compare_prevec(a, b):
+        # this function is re-written to do the same thing as calc_compare but for arrays
+        return np.where(a < b, a, b)
+
+    df_out = (df
+        .assign(c=lambda x: calc_c_prevec(x.a, x.b))
+        .assign(area=lambda x: calc_compare_prevec(x.a, x.b))
+        .loc[lambda x: x.c > 4000]
+        )
+    return df_out
+
+
+df = pd.DataFrame({'a': np.linspace(0, 200, int(1e5)),
+                   'b': np.linspace(0, 500, int(1e5)),
+                   })
+
+# SPEED RESULTS:
+# %timeit test_method_0(df) -- 7.99 s ± 72 ms per loop
+# %timeit test_method_1(df) -- 81.8 ms ± 6.93 ms per loop
+# %timeit test_method_2(df) -- 22.5 ms ± 704 µs per loop
+
+
+# CONCLUSIONS:
+# using pre-vectorized functions is the fastest way; however, it requires re-writing functions
+# using np.vectorize is effective at speeding up the functions almost as well as the re-written pre-vectorized ones
+# using DataFrame.apply is the slowest by far (100x slower than method 1 and 350x slower than method 2)
+```
+
+
+## iPython - History
+
+```python
+%history -g              # all history
+%history -f filename.py  # print/save to file
+%history -l <n>          # print the last n lines of history (including previous sessions)
+%history -n              # show line numbers
+ipython script.ipy       # run ipython script
+```
+
+## iPython - Assign magic function output to variable
+
+```python
+x = %timeit -o f(a,b,c)
+```
+[stackoverflow](https://stackoverflow.com/questions/25289437/capture-the-result-of-an-ipython-magic-function)
+
+## iPython - Run a script
+
+```python
+%run -i somefile.py # runs the file so that variables are injected into current workspace
+```
