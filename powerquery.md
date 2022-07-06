@@ -25,7 +25,7 @@ Value.NativeQuery(Sql.Database(server, database), Text.Format(sql, params), null
 
 ## Read plain text file
 
-```
+```csharp
 read_textfile = (filename as text, optional encoding as number) as text =>
     let
         encoding_used = if encoding <> null then encoding else TextEncoding.Windows,
@@ -36,7 +36,7 @@ read_textfile = (filename as text, optional encoding as number) as text =>
 
 
 ## Find Columns with Errors
-```
+```csharp
 find_cols_with_errors = compose({
     Table.SelectRowsWithErrors,
     (x) => Table.UnpivotOtherColumns(x, {}, "colname", "value"),
@@ -48,7 +48,7 @@ find_cols_with_errors = compose({
 ```
 
 ## Pipe Functions
-```
+```csharp
 pipe = (seed as any, funcs as list) as any =>
     List.Accumulate(funcs, seed, (x,f) => f(x))
 
@@ -69,9 +69,6 @@ Table.FromColumns({{1, 3}, {"x", "y"}}, {"a", "b"}})
 #table({"a", "b", {})
 ```
 
-
-
-
 ## Comparison with Python
 
 PYTHON | POWER QUERY
@@ -86,7 +83,7 @@ PYTHON | POWER QUERY
 
 ## Reading Data
 
-```
+```csharp
 read_excel = (filename, item, kind) => Excel.Workbook(File.Contents(filename), null, true){[Item=item,Kind=kind]}[Data],
 read_excel_sheet = (filename, sheetname) => read_excel(filename, sheetname, "Sheet"),
 read_excel_table = (filename, tablename) => read_excel(filename, tablename, "Table"),
@@ -96,7 +93,7 @@ read_table = (tablename) => Excel.CurrentWorkbook(){[Name=tablename]}[Content]
 
 ## Get values from range:
 
-```
+```csharp
 extract_parameter_from_named_range = (rangename) => Excel.CurrentWorkbook(){[Name=rangename]}[Content]{0}[Column1]
 ```
 
@@ -114,7 +111,7 @@ reduce = (f as function, x as list, x0 as any) => List.Accumulate(x, x0, f)
 ```
 
 ## Cartesian Product (cross product/combinations)
-```
+```csharp
 cartesian_product = (a as list, b as list) => List.Generate(()=>[i=0,j=0], each [i]<List.Count(a), each if [j]<List.Count(b)-1 then [i=[i], j=[j]+1] else [i=[i+1], j=0], each {a{[i]}, b{[j]})
 ```
 
