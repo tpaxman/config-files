@@ -116,6 +116,18 @@ data.set_index('index').join(data.groupby('index').agg(lambda x: len(set(x))), r
 
 # do the transform:
 data['foo_distinctgroupcount'] = data.groupby('index').transform(lambda x: len(set(x)))
+
+# however for multiple columns, the self-join may be better
+# for example:
+df = pd.DataFrame(dict(a=[1,1,1,2,2,2], b=[1,2,3,4,5,6], c=[4,5,6,4,5,6])).set_index('a')
+
+# in this case both would work:
+df.join(df.groupby('a').agg(b_total=('b', sum)))
+df.assign(b_total = lambda df: df.groupby('a')['b'].transform(sum))
+
+# but for multiple columns transform (maybe) requires multiple groupbys; not ideal:
+df.join(df.groupby('a').agg(b_total=('b', sum), c_total=('c', sum)))
+df.assign(b_total = df.groupby('a')['b'].transform(sum), c_total = df.groupby('a')['c'].transform(sum))
 ```
 
 
