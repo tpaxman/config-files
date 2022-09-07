@@ -1,5 +1,37 @@
 # PYTHON
 
+
+## Pattern Matching
+
+```python
+
+# using or cases
+match foo:
+    case 1 | 2: print('one or two')
+    case x: print('this much: ' + x)
+
+# matching dict keys
+match {"a": 1, "b": 2, "c": 3}:
+    case {"b": x}: print(x)
+
+# matching on types when no binding needed:
+match foo:
+    case int(): print('int')
+    case str(): print('str')
+    case pd.Series(): print('series')
+    case _: print('other')
+
+# matching on primative types with binding
+match foo:
+    case int(x): print(f'int is {x}')
+    case str(x): print(f'str is {x}')
+
+# matching on types and binding non-primative objects
+match pd.Series([1,2,3]):
+    case pd.Series() as b: print(b.shape)
+
+```
+
 ## Query a database
 ```python
 import pyodbc
