@@ -584,6 +584,26 @@ Basic commands
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logging.debug('This will get logged')
+
+# log to file:
+    logging.basicConfig(filename='myapp.log', level=logging.INFO)
+# log to stdout:
+    logging.basicConfig(stream=sys.stdout, level=logging.WARNING)
+levels:
+    logging.CRITICAL
+    logging.ERROR
+    logging.WARNING
+    logging.INFO
+    logging.DEBUG
+    logging.NOTSET
+
+# Example:
+import logging
+import sys
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logging.info('Started')
+logging.info('Finished')
 ```
 [source](https://realpython.com/python-logging/)
 
