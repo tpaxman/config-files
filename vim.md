@@ -49,7 +49,7 @@ ciw <CTRL-R> 0       # Replace word with yanked word
 ### Mode Toggling
 
 Description | Command
-        --- | ---
+--- | ---
 `Esc`, | normal mode
 `Ctrl-[` | normal mode
 `Ctrl-o` | Normal mode for one command
@@ -79,16 +79,13 @@ Description | Command
 `x` | delete current character
 `dd` | delete current line
 `D` | delete from cursor to line end
-    - delete characters
 `diw` | current word
 `de` | from cursor to end of word
 `dw` | from cursor up to next word
 `db` | from cursor to beginning of word
 `dt<character>` | up to character
-    - delete neighboring character
 `dh` | to the left
 `dl` | to the right
-- Replace
 `r <character>` | replace current character
 `c` (puts vim into Insert Mode) | change text (in the direction that follows)
 `ci"` | change within quotation marks
