@@ -127,13 +127,6 @@ Command | Description
 
 Navigation ([src](https://vim.fandom.com/wiki/Moving_around))
     
-        
-| | Char | Word | CharBlock | Line |
-|---|---|---|---|---|---|---|
-|RIGHT | l | w | W | e | E | $ |
-|LEFT  | h | b | B |   |   | 0 |
-|UP    | k ||||||
-|DOWN  | j ||||||
 
 ### Add a color theme to ~/.vim/colors
 
