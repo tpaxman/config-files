@@ -1,6 +1,7 @@
 # VIM
 
 ## Tabs settings
+```
 set tabstop=4       # The width of a TAB is set to 4 (but is still \t)
 set shiftwidth=4    # Indents will have a width of 4.
 set softtabstop=4   # Sets the number of columns for a TAB.
@@ -10,13 +11,17 @@ set et
 
 set noexpandtab     # turn off expand tab (for reverting back to using tabs for Makefiles)
 set noet
+```
 
 ## Highlighting settings
+```
 set hlsearch        # highlight searches
 :nohlsearch         # turn off search highlighting
 :noh                # turn off search highlighting
+```
 
 ## Line numbering settings
+```
 set number      # turn on line numbering
 set nonumber    # turn off line numbering
 set nonu
@@ -26,12 +31,15 @@ set relativenumber    # turn on relative line numbering
 set rnu
 set norelativenumber  # turn off relative line numbering
 set nornu
+```
 
 ## Other settings
+```
 set belloff=all    # turn off the flashing warning
 
 :h       # get help with a command
 :h :w    # get help with the write command
+```
 
 ### Useful Actions
 ```
@@ -96,13 +104,12 @@ Description | Command
 ## Search
 
 Search for word
-`/` searches forward
-`?` searches backward
-`*` searches current word forward
-`#` searches current word backward
-`n` moves to next match
-`N` moves to previous match
-
+* `/` searches forward
+* `?` searches backward
+* `*` searches current word forward
+* `#` searches current word backward
+* `n` moves to next match
+* `N` moves to previous match
 
 ## Find and replace
 
@@ -137,9 +144,6 @@ This may be wanted after using `:set ignorecase` to make searches case insensiti
 ### Normal Mode Editing
 
 Navigation ([src](https://vim.fandom.com/wiki/Moving_around))
-    
- 
-    
     
         
 | | Char | Word | CharBlock | Line |
