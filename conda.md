@@ -58,9 +58,10 @@ Or a YAML file:
 -   https://stackoverflow.com/questions/54501167/anaconda-and-git-bash-in-windows-conda-command-not-found
 -   I ran these two commands and it worked:
 
-    . /c/Users/<username>/AppData/Local/Continuum/anaconda3/etc/profile.d/conda.sh
-    conda init bash
-
+```
+. /c/Users/<username>/AppData/Local/Continuum/anaconda3/etc/profile.d/conda.sh
+conda init bash
+```
 ## Cheat sheets
 
 https://docs.conda.io/projects/conda/en/4.6.0/\_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf
