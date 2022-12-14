@@ -1,6 +1,44 @@
 # PYTHON
 
 
+## Select and rename (select as)
+```
+def select_as(df: pd.DataFrame, column_mapper: dict) -> pd.DataFrame:
+    return df.rename(columns=column_mapper)[column_mapper.values()]
+```
+
+## Move DataFrame columns to front
+```python
+
+import pandas as pd
+from collections import Counter
+
+def move_columns_to_front(df: pd.DataFrame, front_columns: list) -> pd.DataFrame:
+    """
+    Move selected columns to the front (i.e. left side) of a DataFrame
+
+    Example:
+    df = pd.DataFrame({"a": [1,2], "b": [3,4], "c": [4,5]})
+    df2 = move_columns_to_front(df, ["c", "b"])
+
+    In : df2.columns
+    Out: Index(['c', 'b', 'a'], dtype='object')
+    """
+
+    # ensure front_columns has no duplicate values
+    front_column_duplicates = {k for k,v in Counter(front_columns).items() if v > 1}
+    assert not front_column_duplicates, f"front_columns contains {len(front_column_duplicates)} duplicate value(s): {front_column_duplicates}"
+
+    # ensure all front_columns values are valid column names
+    invalid_front_columns = set(front_columns) - set(df.columns)
+    assert not invalid_front_columns, f"front_columns contains {len(invalid_front_columns)} name(s) that are not in df: {invalid_front_columns}"
+
+    # reorder columns so that front_columns appear first
+    back_columns = [x for x in df.columns if x not in front_columns]
+    new_columns_order = front_columns + back_columns
+    return df[new_columns_order]
+```
+
 ## Pattern Matching
 
 ```python
