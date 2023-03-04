@@ -1,5 +1,21 @@
 # Google Apps Script
 
+# Basic syntax
+```{javascript}
+
+// return value from function
+var addNumbers = function(start, end) {
+    return start + end
+}
+
+// printing to log
+function print_log() {
+  Logger.log("aaa")
+}
+
+
+
+
 ## READ THIS: [A Beginner's Guide to JavaScript's Prototype](https://tylermcginnis.com/beginners-guide-to-javascript-prototype/)
 
 ## Array Map Method
