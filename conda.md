@@ -1,5 +1,14 @@
 # Conda
 
+### setup Conda and Mamba on WSL Ubuntu
+
+* download the `.sh` files from the websites corresponding to Linux
+* run `bash Miniconda....sh`
+* allow the `init` to occur to copy the relevant source to `.bashrc`
+* otherwise later you can do `source ~/miniconda3/etc/profile.d/conda.sh` and then `conda init`
+* same thing with mamba basically
+
+
 ## Environments
 
 ### General commands
