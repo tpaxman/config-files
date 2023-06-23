@@ -10,10 +10,10 @@ set hlsearch
 hi Search ctermbg=LightYellow
 hi Search ctermfg=Red
 
-# WRAPPING
+" WRAPPING
 set nowrap
 
-# SCROLLING
+" SCROLLING
 set scrolloff=2
 
 " LINE NUMBERS
@@ -51,6 +51,15 @@ nnoremap <Leader>1 :%s/#"\([^"]\+\)"\=substitute(tolower(submatch(1)), " ", "_",
 
 " For adding Python script boilerplate
 nnoremap <Leader>m o<Esc>0iif __name__=='__main__':<CR>    main()<Esc>
+
+" WSL YANK
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system('cat |' . s:clip, @0) | endif
+    augroup END
+endif
 
 " For printing the current date
 " nnoremap <Leader>t "=strftime('%Y-%m-%d')<CR>p
