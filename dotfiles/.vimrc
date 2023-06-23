@@ -9,6 +9,8 @@ set ai
 
 " keeps search results highlighted
 set hlsearch
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
 
 " turn off line wrapping
 set nowrap
