@@ -37,3 +37,7 @@ alias cl='clear;ll'
 alias start='cmd.exe /C start'
 alias win='cd /mnt/c/Users/'
 
+# PAT
+alias pat='cat ~/pat | clip.exe'
+alias patpush='cat ~/pat | clip.exe; git push'
+alias build-pandas='python -m pip install -ve . --no-build-isolation --config-settings editable-verbose=true'
