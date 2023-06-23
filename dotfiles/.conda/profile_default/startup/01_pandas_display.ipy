@@ -1,0 +1,5 @@
+pd.options.display.width = 220
+pd.options.display.max_columns = 20
+pd.options.display.min_rows = 8
+pd.options.display.max_rows = 30
+pd.options.display.max_colwidth = 25
