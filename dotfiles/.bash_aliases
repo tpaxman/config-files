@@ -1,8 +1,6 @@
 # Shell settings - do not allow file overwrite
 set -o noclobber
 
-# Grep with color:
-alias grep='grep --color=auto'
 
 # Cat with color:
 alias ccat='highlight -O ansi'
@@ -22,6 +20,10 @@ vim_first () {
     vim $(ls -t $1 | head -n 1)
 }
 
+# Overrides
+alias grep='grep --color=auto'
+alias diff='diff -y --color=auto'
+
 # General aliases:
 alias ll='ls -alF'
 alias la='ls -A'
@@ -34,3 +36,4 @@ alias cl='clear;ll'
 # Aliases for Ubuntu on Windows:
 alias start='cmd.exe /C start'
 alias win='cd /mnt/c/Users/'
+
