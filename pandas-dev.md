@@ -32,6 +32,8 @@ cd pandas-tpaxman
 mamba deactivate
 mamba env update -f environment.yml
 mamba activate pandas-dev
+
+python -m pip install -ve . --no-build-isolation --config-settings editable-verbose=true
 ```
 
 
