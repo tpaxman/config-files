@@ -65,3 +65,5 @@ endif
 " nnoremap <Leader>t "=strftime('%Y-%m-%d')<CR>p
 " inoremap <Leader>t <Esc>"=strftime('%Y-%m-%d')<CR>pa
 
+" FOR PANDAS EDITS
+set colorcolumn=88
