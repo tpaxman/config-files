@@ -1,5 +1,13 @@
 # GIT
 
+## Rename branch locally and remotely
+
+```
+git branch -m <old-name> <new-name>
+git push origin --delete <old-name>
+git push -u origin <new-name>
+```
+
 ## Setup a repository and remote
 
 ```bash
