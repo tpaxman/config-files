@@ -43,7 +43,7 @@ pretty = format:%C(auto,yellow bold)% h %C(auto,blue)%>(11,trunc)% ad %C(auto,gr
 [alias]
 # logs
 #l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-l = log -35
+l = log
 lg = l --graph
 
 a = add
