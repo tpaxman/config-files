@@ -1,5 +1,8 @@
 " SETTINGS
 
+" show summary line
+set ls=2
+
 " no flashing bell
 set belloff=all
 
@@ -48,6 +51,9 @@ cnoremap ;; <Esc>
 
 " For cleaning up Power Query files
 nnoremap <Leader>1 :%s/#"\([^"]\+\)"\=substitute(tolower(submatch(1)), " ", "_", "g")/gc<CR>
+
+" For adding Python script boilerplate
+nnoremap <Leader>m o<Esc>0iif __name__=='__main__':<CR>    main()<Esc>
 
 " For adding Python script boilerplate
 nnoremap <Leader>m o<Esc>0iif __name__=='__main__':<CR>    main()<Esc>
