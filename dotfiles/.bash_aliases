@@ -1,10 +1,6 @@
 # Shell settings - do not allow file overwrite
 set -o noclobber
 
-
-# Cat with color:
-alias ccat='highlight -O ansi'
-
 # Less with color:
 cless () {
     ccat $1 | less -R
@@ -41,3 +37,6 @@ alias win='cd /mnt/c/Users/'
 alias pat='cat ~/pat | clip.exe'
 alias patpush='cat ~/pat | clip.exe; git push'
 alias build-pandas='python -m pip install -ve . --no-build-isolation --config-settings editable-verbose=true'
+
+# Cat with color:
+alias ccat='highlight -O ansi'

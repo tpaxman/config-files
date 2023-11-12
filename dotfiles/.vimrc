@@ -1,7 +1,13 @@
 " SETTINGS
 
-" made status bar visible
-set laststatus=2
+" folding
+set foldmethod=indent   
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
+" show summary line
+set ls=2
 
 " no flashing bell
 set belloff=all
@@ -54,6 +60,9 @@ nnoremap <Leader>1 :%s/#"\([^"]\+\)"\=substitute(tolower(submatch(1)), " ", "_",
 
 " For adding Python script boilerplate
 nnoremap <Leader>m o<Esc>0iif __name__ == '__main__':<CR>    main()<Esc>
+
+" For adding Python script boilerplate
+nnoremap <Leader>m o<Esc>0iif __name__=='__main__':<CR>    main()<Esc>
 
 " WSL YANK
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
