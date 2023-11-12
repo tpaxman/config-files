@@ -1,5 +1,39 @@
 # PYTHON
 
+## Translate languages
+
+```
+!pip install deep-translator
+from deep_translator import (GoogleTranslator,
+                             PonsTranslator,
+                             LingueeTranslator,
+                             MyMemoryTranslator,
+                             YandexTranslator,
+                             DeeplTranslator,
+                             QcriTranslator,
+                             single_detection,
+                             batch_detection)
+
+# with google you can translate entire files as well
+google = GoogleTranslator(source='de', target='en')
+google.translate('Haus') # 'House'
+google.translate_batch(['Haus', 'Maus'])  # --> ['House', 'Mouse']
+google.translate_file('some-file.md')
+
+
+# linguee lets you get multiple synonym translations back
+linguee = LingueeTranslator(source='german', target='english')
+
+linguee.translate_words(['Haus', 'Maus'])
+# Out: ['house', 'mouse']
+
+linguee.translate_words(['Haus', 'Maus'], return_all=True)
+# Out: [['house', 'building', 'home', 'domicile', 'dwell', 'reside'], ['mouse']]
+``` 
+                            
+
+
+
 
 ## Select and rename (select as)
 ```

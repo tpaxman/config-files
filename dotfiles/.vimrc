@@ -1,5 +1,8 @@
 " SETTINGS
 
+" made status bar visible
+set laststatus=2
+
 " no flashing bell
 set belloff=all
 
@@ -50,7 +53,7 @@ cnoremap ;; <Esc>
 nnoremap <Leader>1 :%s/#"\([^"]\+\)"\=substitute(tolower(submatch(1)), " ", "_", "g")/gc<CR>
 
 " For adding Python script boilerplate
-nnoremap <Leader>m o<Esc>0iif __name__=='__main__':<CR>    main()<Esc>
+nnoremap <Leader>m o<Esc>0iif __name__ == '__main__':<CR>    main()<Esc>
 
 " WSL YANK
 let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
@@ -66,4 +69,4 @@ endif
 " inoremap <Leader>t <Esc>"=strftime('%Y-%m-%d')<CR>pa
 
 " FOR PANDAS EDITS
-set colorcolumn=88
+set colorcolumn=89
